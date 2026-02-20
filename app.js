@@ -1,5 +1,41 @@
 const CONTENT_KEY = 'dnpSiteContent';
 
+const TEXT_FIELDS = [
+  'heroTitle',
+  'heroBtnOne',
+  'heroBtnTwo',
+  'challengeTitle',
+  'techTitle',
+  'jobSearchTitle',
+  'appTitle',
+  'blogOneTitle',
+  'blogTwoTitle',
+  'blogThreeTitle',
+];
+
+const IMAGE_FIELDS = [
+  'heroImage',
+  'cardOneImage',
+  'cardTwoImage',
+  'cardThreeImage',
+  'cardFourImage',
+  'challengeImage',
+  'techImage',
+  'jobSearchImage',
+  'appImage',
+  'blogOneImage',
+  'blogTwoImage',
+  'blogThreeImage',
+];
+
+const UPLOADABLE_IMAGE_FIELDS = [
+  'heroImage',
+  'challengeImage',
+  'techImage',
+  'jobSearchImage',
+  'appImage',
+];
+
 const defaults = {
   heroTitle: 'Your Partner in the Mission of Care',
   heroBtnOne: 'Search Jobs',
@@ -45,22 +81,8 @@ function setImage(id, src) {
 }
 
 function applyContent(content) {
-  setText('heroTitle', content.heroTitle);
-  setText('heroBtnOne', content.heroBtnOne);
-  setText('heroBtnTwo', content.heroBtnTwo);
-  setText('challengeTitle', content.challengeTitle);
-  setText('techTitle', content.techTitle);
-  setText('jobSearchTitle', content.jobSearchTitle);
-  setText('appTitle', content.appTitle);
-  setText('blogOneTitle', content.blogOneTitle);
-  setText('blogTwoTitle', content.blogTwoTitle);
-  setText('blogThreeTitle', content.blogThreeTitle);
-
-  [
-    'heroImage', 'cardOneImage', 'cardTwoImage', 'cardThreeImage', 'cardFourImage',
-    'challengeImage', 'techImage', 'jobSearchImage', 'appImage',
-    'blogOneImage', 'blogTwoImage', 'blogThreeImage',
-  ].forEach((id) => setImage(id, content[id]));
+  TEXT_FIELDS.forEach((id) => setText(id, content[id]));
+  IMAGE_FIELDS.forEach((id) => setImage(id, content[id]));
 }
 
 function fileToDataURL(file) {
@@ -85,25 +107,21 @@ if (editorPanelEl && openEditorEl && closeEditorEl && resetDefaultsEl && editorF
   openEditorEl.addEventListener('click', () => editorPanelEl.classList.add('open'));
   closeEditorEl.addEventListener('click', () => editorPanelEl.classList.remove('open'));
 
-  ['heroTitle', 'heroBtnOne', 'heroBtnTwo', 'challengeTitle', 'techTitle', 'jobSearchTitle', 'appTitle', 'blogOneTitle', 'blogTwoTitle', 'blogThreeTitle']
-    .forEach((name) => {
-      const input = editorFormEl.elements.namedItem(name);
-      if (input) input.value = content[name];
-    });
+  TEXT_FIELDS.forEach((name) => {
+    const input = editorFormEl.elements.namedItem(name);
+    if (input) input.value = content[name];
+  });
 
   editorFormEl.addEventListener('submit', async (event) => {
     event.preventDefault();
-
     const next = { ...content };
-    const textFields = ['heroTitle', 'heroBtnOne', 'heroBtnTwo', 'challengeTitle', 'techTitle', 'jobSearchTitle', 'appTitle', 'blogOneTitle', 'blogTwoTitle', 'blogThreeTitle'];
 
-    textFields.forEach((name) => {
+    TEXT_FIELDS.forEach((name) => {
       const input = editorFormEl.elements.namedItem(name);
       if (input) next[name] = String(input.value || '').trim() || defaults[name];
     });
 
-    const imageFields = ['heroImage', 'challengeImage', 'techImage', 'jobSearchImage', 'appImage'];
-    for (const field of imageFields) {
+    for (const field of UPLOADABLE_IMAGE_FIELDS) {
       const input = editorFormEl.elements.namedItem(field);
       if (input && input.files && input.files[0]) {
         next[field] = await fileToDataURL(input.files[0]);
@@ -121,15 +139,13 @@ if (editorPanelEl && openEditorEl && closeEditorEl && resetDefaultsEl && editorF
     content = { ...defaults };
     applyContent(content);
     editorFormEl.reset();
-    ['heroTitle', 'heroBtnOne', 'heroBtnTwo', 'challengeTitle', 'techTitle', 'jobSearchTitle', 'appTitle', 'blogOneTitle', 'blogTwoTitle', 'blogThreeTitle']
-      .forEach((name) => {
-        const input = editorFormEl.elements.namedItem(name);
-        if (input) input.value = content[name];
-      });
+    TEXT_FIELDS.forEach((name) => {
+      const input = editorFormEl.elements.namedItem(name);
+      if (input) input.value = content[name];
+    });
   });
 }
 
-// Optional jobs-filter module (kept to resolve merge conflict between editor work and jobs work).
 const jobs = [
   { id: 1, title: 'Hospitalist Physician', discipline: 'Physician', location: 'Texas', type: 'Locum Tenens', pay: '$220/hr', schedule: '7 on / 7 off' },
   { id: 2, title: 'ER Registered Nurse', discipline: 'RN', location: 'California', type: 'Travel', pay: '$3,150/week', schedule: '3x12 nights' },
@@ -175,13 +191,17 @@ function initJobsModule() {
 
   function renderJobs() {
     const filtered = filterJobs();
-    jobsListEl.innerHTML = filtered.map((job) => `
+    jobsListEl.innerHTML = filtered
+      .map(
+        (job) => `
       <article>
         <h3>${job.title}</h3>
         <p>${job.discipline} • ${job.location} • ${job.type}</p>
         <p><strong>${job.pay}</strong> — ${job.schedule}</p>
       </article>
-    `).join('');
+    `,
+      )
+      .join('');
     jobsEmptyEl.hidden = filtered.length !== 0;
   }
 
