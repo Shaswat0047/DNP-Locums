@@ -62,8 +62,16 @@ const defaults = {
 };
 
 function loadContent() {
-  const stored = JSON.parse(localStorage.getItem(CONTENT_KEY) || '{}');
-  return { ...defaults, ...stored };
+  try {
+    const raw = localStorage.getItem(CONTENT_KEY);
+    const stored = raw ? JSON.parse(raw) : {};
+    if (!stored || typeof stored !== 'object' || Array.isArray(stored)) {
+      return { ...defaults };
+    }
+    return { ...defaults, ...stored };
+  } catch {
+    return { ...defaults };
+  }
 }
 
 function saveContent(content) {
@@ -213,3 +221,10 @@ function initJobsModule() {
 }
 
 initJobsModule();
+
+const downloadFormEl = document.querySelector('.download-form');
+if (downloadFormEl) {
+  downloadFormEl.addEventListener('submit', (event) => {
+    event.preventDefault();
+  });
+}
