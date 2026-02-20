@@ -127,3 +127,68 @@ resetDefaultsEl.addEventListener('click', () => {
       if (input) input.value = content[name];
     });
 });
+
+// Optional jobs-filter module (kept to resolve merge conflict between editor work and jobs work).
+const jobs = [
+  { id: 1, title: 'Hospitalist Physician', discipline: 'Physician', location: 'Texas', type: 'Locum Tenens', pay: '$220/hr', schedule: '7 on / 7 off' },
+  { id: 2, title: 'ER Registered Nurse', discipline: 'RN', location: 'California', type: 'Travel', pay: '$3,150/week', schedule: '3x12 nights' },
+  { id: 3, title: 'Family Nurse Practitioner', discipline: 'NP / PA', location: 'Florida', type: 'Permanent', pay: '$142k/year', schedule: 'Mon-Fri' },
+  { id: 4, title: 'Radiology Technologist', discipline: 'Allied Health', location: 'New York', type: 'Travel', pay: '$2,800/week', schedule: '4x10 days' },
+  { id: 5, title: 'Critical Care Physician', discipline: 'Physician', location: 'Florida', type: 'Locum Tenens', pay: '$260/hr', schedule: 'Block schedule' },
+  { id: 6, title: 'Operating Room RN', discipline: 'RN', location: 'Texas', type: 'Travel', pay: '$3,020/week', schedule: '5x8 days' },
+  { id: 7, title: 'Psychiatry NP', discipline: 'NP / PA', location: 'Illinois', type: 'Locum Tenens', pay: '$98/hr', schedule: 'Outpatient weekdays' },
+  { id: 8, title: 'Respiratory Therapist', discipline: 'Allied Health', location: 'California', type: 'Permanent', pay: '$95k/year', schedule: 'Rotating shifts' },
+];
+
+function initJobsModule() {
+  const jobsListEl = document.getElementById('jobsList');
+  const jobsEmptyEl = document.getElementById('jobsEmpty');
+  const disciplineFilterEl = document.getElementById('disciplineFilter');
+  const locationFilterEl = document.getElementById('locationFilter');
+  const typeFilterEl = document.getElementById('typeFilter');
+  const keywordFilterEl = document.getElementById('keywordFilter');
+
+  if (!jobsListEl || !jobsEmptyEl || !disciplineFilterEl || !locationFilterEl || !typeFilterEl || !keywordFilterEl) {
+    return;
+  }
+
+  function selectedFilters() {
+    return {
+      discipline: disciplineFilterEl.value,
+      location: locationFilterEl.value,
+      type: typeFilterEl.value,
+      keyword: keywordFilterEl.value.trim().toLowerCase(),
+    };
+  }
+
+  function filterJobs() {
+    const { discipline, location, type, keyword } = selectedFilters();
+    return jobs.filter((job) => {
+      const disciplineMatch = discipline === 'all' || job.discipline === discipline;
+      const locationMatch = location === 'all' || job.location === location;
+      const typeMatch = type === 'all' || job.type === type;
+      const keywordMatch = !keyword || `${job.title} ${job.discipline} ${job.location} ${job.type}`.toLowerCase().includes(keyword);
+      return disciplineMatch && locationMatch && typeMatch && keywordMatch;
+    });
+  }
+
+  function renderJobs() {
+    const filtered = filterJobs();
+    jobsListEl.innerHTML = filtered.map((job) => `
+      <article>
+        <h3>${job.title}</h3>
+        <p>${job.discipline} • ${job.location} • ${job.type}</p>
+        <p><strong>${job.pay}</strong> — ${job.schedule}</p>
+      </article>
+    `).join('');
+    jobsEmptyEl.hidden = filtered.length !== 0;
+  }
+
+  [disciplineFilterEl, locationFilterEl, typeFilterEl].forEach((selectEl) => {
+    selectEl.addEventListener('change', renderJobs);
+  });
+  keywordFilterEl.addEventListener('input', renderJobs);
+  renderJobs();
+}
+
+initJobsModule();
