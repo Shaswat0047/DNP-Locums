@@ -228,3 +228,25 @@ if (downloadFormEl) {
     event.preventDefault();
   });
 }
+
+
+const contactFormEl = document.getElementById('contactForm');
+const contactMessageEl = document.getElementById('contactMessage');
+if (contactFormEl && contactMessageEl) {
+  contactFormEl.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const formData = new FormData(contactFormEl);
+    const lead = {
+      facility: String(formData.get('facility') || '').trim(),
+      contact: String(formData.get('contact') || '').trim(),
+      email: String(formData.get('email') || '').trim(),
+      need: String(formData.get('need') || '').trim(),
+      submittedAt: new Date().toISOString(),
+    };
+    const existing = JSON.parse(localStorage.getItem('staffingLeads') || '[]');
+    existing.push(lead);
+    localStorage.setItem('staffingLeads', JSON.stringify(existing));
+    contactFormEl.reset();
+    contactMessageEl.textContent = 'Request received. Our team will contact you soon.';
+  });
+}

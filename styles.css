@@ -116,3 +116,8 @@ nav a { text-decoration: none; color: var(--ink); font-size: 0.9rem; }
 .jobs-list p { margin: 0.25rem 0; color: var(--muted); }
 .jobs-empty { text-align: center; color: var(--muted); font-weight: 600; }
 
+
+.contact-form { display: grid; gap: 0.7rem; background: #fff; border: 1px solid #dce5ef; border-radius: 12px; padding: 1rem; }
+.contact-form label { display: grid; gap: 0.3rem; font-weight: 600; }
+.contact-form input,
+.contact-form textarea { border: 1px solid #cfdced; border-radius: 8px; padding: 0.55rem 0.65rem; font: inherit; }

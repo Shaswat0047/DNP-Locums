@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DNP Locums | Workforce Solutions</title>
-    <meta name="description" content="DNP Locums workforce and staffing solutions platform." />
+    <title>DNP Locums | Enterprise Healthcare Staffing Platform</title>
+    <meta name="description" content="DNP Locums delivers enterprise-grade healthcare staffing with editable content tools and modern job search workflows." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -16,14 +16,14 @@
         <a href="#" class="logo">DNP <span>Locums</span></a>
         <nav>
           <ul>
-            <li><a href="#">Job Seekers</a></li>
-            <li><a href="#">Hire Talent</a></li>
-            <li><a href="#">Talent Management</a></li>
-            <li><a href="#">Technology</a></li>
-            <li><a href="#">About</a></li>
+            <li><a href="#jobs">Jobs</a></li>
+            <li><a href="#why-us">Why Us</a></li>
+            <li><a href="#specialties">Specialties</a></li>
+            <li><a href="#platform">Platform</a></li>
+            <li><a href="#contact">Contact</a></li>
           </ul>
         </nav>
-        <a class="btn btn-primary" href="#">Apply Now</a>
+        <a class="btn btn-primary" href="#jobs">Find Jobs</a>
       </div>
     </header>
 
@@ -41,7 +41,7 @@
         </div>
       </section>
 
-      <section class="section section-light">
+      <section class="section section-light" id="why-us">
         <div class="container card-grid">
           <article class="service-card"><h3 id="cardOneTitle">Workforce Technology</h3><img id="cardOneImage" alt="Workforce" /></article>
           <article class="service-card"><h3 id="cardTwoTitle">Comprehensive Staffing</h3><img id="cardTwoImage" alt="Staffing" /></article>
@@ -70,7 +70,7 @@
         </div>
       </section>
 
-      <section class="section section-blue">
+      <section class="section section-blue" id="platform">
         <div class="container split">
           <div>
             <h2 id="techTitle">A Technology to Manage and Optimize Your Entire Workforce</h2>
@@ -93,7 +93,7 @@
         </div>
       </section>
 
-      <section class="section section-light">
+      <section class="section section-light" id="specialties">
         <div class="container split">
           <img id="jobSearchImage" alt="Doctor and nurse" />
           <div>
@@ -186,6 +186,28 @@
           </div>
         </div>
       </section>
+    
+      <section class="section section-light" id="contact">
+        <div class="container">
+          <h2 class="center-title">Contact DNP Locums</h2>
+          <div class="split">
+            <div>
+              <p>Email: staffing@dnplocums.com</p>
+              <p>Phone: (800) 555-0199</p>
+              <p>Hours: Mon–Fri, 8am–7pm CT</p>
+            </div>
+            <form id="contactForm" class="contact-form">
+              <label>Facility Name <input name="facility" required type="text" /></label>
+              <label>Contact Name <input name="contact" required type="text" /></label>
+              <label>Work Email <input name="email" required type="email" /></label>
+              <label>Staffing Need <textarea name="need" rows="4" required></textarea></label>
+              <button class="btn btn-primary" type="submit">Request Talent</button>
+              <p id="contactMessage" class="jobs-empty"></p>
+            </form>
+          </div>
+        </div>
+      </section>
+
     </main>
 
     <footer class="site-footer">
