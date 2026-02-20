@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DNP Locums | Enterprise Healthcare Staffing Platform</title>
+    <meta
+      name="description"
+      content="DNP Locums delivers enterprise-grade healthcare staffing for clinicians and facilities with modern job search, specialty coverage, and secure workflows."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <a href="#" class="logo">DNP <span>Locums</span></a>
+        <nav>
+          <ul>
+            <li><a href="#jobs">Jobs</a></li>
+            <li><a href="#why-us">Why Us</a></li>
+            <li><a href="#specialties">Specialties</a></li>
+            <li><a href="#platform">Platform</a></li>
+            <li><a href="#partners">Partners</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <a class="btn btn-primary" href="#jobs">Find Jobs</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <p class="eyebrow">Enterprise Healthcare Recruitment Experience</p>
+            <h1>Modern staffing website experience built like top U.S. healthcare recruiters.</h1>
+            <p class="hero-copy">
+              DNP Locums combines high-performance job search, specialty-driven recruiting,
+              and secure lead workflows inspired by enterprise staffing leaders.
+            </p>
+            <div class="hero-actions">
+              <a href="#jobs" class="btn btn-primary">Search Open Roles</a>
+              <a href="#contact" class="btn btn-outline">Request Talent</a>
+            </div>
+            <div class="stats">
+              <article><strong>3,500+</strong><span>Clinicians in network</span></article>
+              <article><strong>450+</strong><span>Partner facilities</span></article>
+              <article><strong>48 hrs</strong><span>Average shortlist delivery</span></article>
+            </div>
+          </div>
+          <div class="hero-card">
+            <h2>Quick Apply</h2>
+            <form id="quickApplyForm">
+              <label>
+                Full Name
+                <input required name="name" type="text" placeholder="Jane Doe" />
+              </label>
+              <label>
+                Email
+                <input required name="email" type="email" placeholder="jane@email.com" />
+              </label>
+              <label>
+                Discipline
+                <select name="discipline" required>
+                  <option value="">Select discipline</option>
+                  <option>Physician</option>
+                  <option>RN</option>
+                  <option>NP / PA</option>
+                  <option>Allied Health</option>
+                </select>
+              </label>
+              <button class="btn btn-primary" type="submit">Submit Profile</button>
+              <p id="quickApplyMessage" class="form-message" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="section trust-bar" id="partners">
+        <div class="container">
+          <p class="trust-title">Trusted by hospitals, health systems, and community clinics</p>
+          <div class="logo-grid" aria-label="Partner facility logos">
+            <img src="assets/company-1.svg" alt="Northside Health" />
+            <img src="assets/company-2.svg" alt="CareBridge" />
+            <img src="assets/company-3.svg" alt="Pioneer Medical" />
+            <img src="assets/company-4.svg" alt="Unity Clinics" />
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="why-us">
+        <div class="container">
+          <h2>Why healthcare organizations choose DNP Locums</h2>
+          <div class="feature-grid">
+            <article>
+              <h3>Dedicated recruiter model</h3>
+              <p>One recruiter + one credentialing specialist + one payroll contact for every assignment.</p>
+            </article>
+            <article>
+              <h3>Rapid credentialing</h3>
+              <p>We manage licensing, onboarding, and compliance workflows so providers start on time.</p>
+            </article>
+            <article>
+              <h3>Transparent pay</h3>
+              <p>Clear rate visibility, assignment terms, and schedule expectations up front.</p>
+            </article>
+            <article>
+              <h3>24/7 support</h3>
+              <p>Real-time support for urgent coverage, schedule adjustments, and assignment transitions.</p>
+            </article>
+          </div>
+
+          <div class="steps-grid">
+            <article>
+              <span>1</span>
+              <h3>Submit profile</h3>
+              <p>Share specialty, location preferences, and timeline.</p>
+            </article>
+            <article>
+              <span>2</span>
+              <h3>Review matches</h3>
+              <p>Get curated opportunities from vetted facilities.</p>
+            </article>
+            <article>
+              <span>3</span>
+              <h3>Start assignment</h3>
+              <p>Launch with credentialing, onboarding, and ongoing support.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section bg-muted" id="specialties">
+        <div class="container">
+          <h2>Specialties we staff</h2>
+          <p class="section-subtitle">Coverage across acute care, outpatient, behavioral health, and allied disciplines.</p>
+          <div class="pill-row">
+            <span>Family Medicine</span><span>Hospitalist</span><span>Emergency Medicine</span><span>Internal Medicine</span>
+            <span>Cardiology</span><span>Anesthesiology</span><span>ICU / Critical Care</span><span>Psychiatry</span>
+            <span>Operating Room RN</span><span>Telemetry RN</span><span>Labor & Delivery RN</span><span>Radiology Tech</span>
+            <span>Respiratory Therapist</span><span>Physical Therapist</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="platform">
+        <div class="container">
+          <div class="section-header">
+            <h2>Enterprise platform capabilities</h2>
+            <p>Built around modern healthcare staffing architecture standards.</p>
+          </div>
+          <div class="stack-grid">
+            <article>
+              <h3>Front-end UX</h3>
+              <p>Responsive, mobile-first interfaces for fast job filtering and conversion-focused journeys.</p>
+              <ul>
+                <li>HTML5 / CSS3 / JavaScript</li>
+                <li>React / Next.js-ready design patterns</li>
+                <li>PWA-friendly UI structure</li>
+              </ul>
+            </article>
+            <article>
+              <h3>CMS & content operations</h3>
+              <p>Publishing workflows for marketing and recruiting teams without engineering bottlenecks.</p>
+              <ul>
+                <li>Sitecore / AEM / Drupal / WordPress Enterprise</li>
+                <li>Headless CMS compatibility</li>
+                <li>SEO and persona-based content</li>
+              </ul>
+            </article>
+            <article>
+              <h3>Back-end & data layer</h3>
+              <p>Scalable application and data services for jobs, applications, and recruiter workflows.</p>
+              <ul>
+                <li>.NET / Node.js / Java / Python options</li>
+                <li>SQL Server / PostgreSQL / MySQL / MongoDB</li>
+                <li>ATS and CRM integration model</li>
+              </ul>
+            </article>
+            <article>
+              <h3>Cloud, security, and analytics</h3>
+              <p>Operational foundation for performance, observability, and healthcare-grade controls.</p>
+              <ul>
+                <li>Azure / AWS / GCP deployment paths</li>
+                <li>SSL, WAF, and identity integration</li>
+                <li>GA4, tag manager, and conversion tracking</li>
+              </ul>
+            </article>
+          </div>
+          <div class="architecture-card">
+            <h3>Typical staffing architecture</h3>
+            <p>
+              Frontend (React/Next) → CMS (Sitecore/AEM/Headless) → Application Services (.NET/Node/Java) →
+              Databases (SQL/NoSQL) → ATS/CRM (Bullhorn/Salesforce) → Cloud + Security + Analytics.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="jobs">
+        <div class="container">
+          <div class="section-header">
+            <h2>Featured opportunities</h2>
+            <p>Filter by discipline, location, and assignment type.</p>
+          </div>
+
+          <div class="filters">
+            <label>
+              Discipline
+              <select id="disciplineFilter">
+                <option value="all">All</option>
+                <option value="Physician">Physician</option>
+                <option value="RN">RN</option>
+                <option value="NP / PA">NP / PA</option>
+                <option value="Allied Health">Allied Health</option>
+              </select>
+            </label>
+            <label>
+              Location
+              <select id="locationFilter">
+                <option value="all">All</option>
+                <option value="Texas">Texas</option>
+                <option value="California">California</option>
+                <option value="Florida">Florida</option>
+                <option value="New York">New York</option>
+                <option value="Illinois">Illinois</option>
+              </select>
+            </label>
+            <label>
+              Assignment
+              <select id="typeFilter">
+                <option value="all">All</option>
+                <option value="Locum Tenens">Locum Tenens</option>
+                <option value="Travel">Travel</option>
+                <option value="Permanent">Permanent</option>
+              </select>
+            </label>
+            <label>
+              Keyword
+              <input id="keywordFilter" type="search" placeholder="e.g. ICU, hospitalist" />
+            </label>
+          </div>
+
+          <div id="jobsList" class="jobs-grid"></div>
+          <p id="jobsEmpty" class="jobs-empty" hidden>No jobs match your selected filters.</p>
+        </div>
+      </section>
+
+      <section class="section bg-muted" id="contact">
+        <div class="container contact-grid">
+          <div>
+            <h2>Contact DNP Locums</h2>
+            <p>For clinician placement or enterprise staffing partnerships, connect with our recruiting operations team.</p>
+            <ul class="contact-list">
+              <li><strong>Clinician Support:</strong> clinicians@dnplocums.com</li>
+              <li><strong>Facility Staffing:</strong> staffing@dnplocums.com</li>
+              <li><strong>Phone:</strong> (800) 555-0199</li>
+              <li><strong>Hours:</strong> Mon–Fri, 8am–7pm CT</li>
+            </ul>
+          </div>
+          <form id="contactForm" class="contact-form">
+            <label>
+              Facility Name
+              <input name="facility" required type="text" />
+            </label>
+            <label>
+              Contact Name
+              <input name="contact" required type="text" />
+            </label>
+            <label>
+              Work Email
+              <input name="email" required type="email" />
+            </label>
+            <label>
+              Staffing Need
+              <textarea name="need" required rows="4"></textarea>
+            </label>
+            <button class="btn btn-primary" type="submit">Request Talent</button>
+            <p id="contactMessage" class="form-message" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© <span id="year"></span> DNP Locums. All rights reserved.</p>
+        <a href="#" aria-label="Back to top">Back to top ↑</a>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
