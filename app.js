@@ -81,52 +81,53 @@ const editorFormEl = document.getElementById('editorForm');
 let content = loadContent();
 applyContent(content);
 
+if (editorPanelEl && openEditorEl && closeEditorEl && resetDefaultsEl && editorFormEl) {
+  openEditorEl.addEventListener('click', () => editorPanelEl.classList.add('open'));
+  closeEditorEl.addEventListener('click', () => editorPanelEl.classList.remove('open'));
 
-openEditorEl.addEventListener('click', () => editorPanelEl.classList.add('open'));
-closeEditorEl.addEventListener('click', () => editorPanelEl.classList.remove('open'));
-
-['heroTitle', 'heroBtnOne', 'heroBtnTwo', 'challengeTitle', 'techTitle', 'jobSearchTitle', 'appTitle', 'blogOneTitle', 'blogTwoTitle', 'blogThreeTitle']
-  .forEach((name) => {
-    const input = editorFormEl.elements.namedItem(name);
-    if (input) input.value = content[name];
-  });
-
-editorFormEl.addEventListener('submit', async (event) => {
-  event.preventDefault();
-
-  const next = { ...content };
-  const textFields = ['heroTitle', 'heroBtnOne', 'heroBtnTwo', 'challengeTitle', 'techTitle', 'jobSearchTitle', 'appTitle', 'blogOneTitle', 'blogTwoTitle', 'blogThreeTitle'];
-
-  textFields.forEach((name) => {
-    const input = editorFormEl.elements.namedItem(name);
-    if (input) next[name] = String(input.value || '').trim() || defaults[name];
-  });
-
-  const imageFields = ['heroImage', 'challengeImage', 'techImage', 'jobSearchImage', 'appImage'];
-  for (const field of imageFields) {
-    const input = editorFormEl.elements.namedItem(field);
-    if (input && input.files && input.files[0]) {
-      next[field] = await fileToDataURL(input.files[0]);
-    }
-  }
-
-  content = next;
-  saveContent(content);
-  applyContent(content);
-  editorPanelEl.classList.remove('open');
-});
-
-resetDefaultsEl.addEventListener('click', () => {
-  localStorage.removeItem(CONTENT_KEY);
-  content = { ...defaults };
-  applyContent(content);
-  editorFormEl.reset();
   ['heroTitle', 'heroBtnOne', 'heroBtnTwo', 'challengeTitle', 'techTitle', 'jobSearchTitle', 'appTitle', 'blogOneTitle', 'blogTwoTitle', 'blogThreeTitle']
     .forEach((name) => {
       const input = editorFormEl.elements.namedItem(name);
       if (input) input.value = content[name];
     });
-});
+
+  editorFormEl.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const next = { ...content };
+    const textFields = ['heroTitle', 'heroBtnOne', 'heroBtnTwo', 'challengeTitle', 'techTitle', 'jobSearchTitle', 'appTitle', 'blogOneTitle', 'blogTwoTitle', 'blogThreeTitle'];
+
+    textFields.forEach((name) => {
+      const input = editorFormEl.elements.namedItem(name);
+      if (input) next[name] = String(input.value || '').trim() || defaults[name];
+    });
+
+    const imageFields = ['heroImage', 'challengeImage', 'techImage', 'jobSearchImage', 'appImage'];
+    for (const field of imageFields) {
+      const input = editorFormEl.elements.namedItem(field);
+      if (input && input.files && input.files[0]) {
+        next[field] = await fileToDataURL(input.files[0]);
+      }
+    }
+
+    content = next;
+    saveContent(content);
+    applyContent(content);
+    editorPanelEl.classList.remove('open');
+  });
+
+  resetDefaultsEl.addEventListener('click', () => {
+    localStorage.removeItem(CONTENT_KEY);
+    content = { ...defaults };
+    applyContent(content);
+    editorFormEl.reset();
+    ['heroTitle', 'heroBtnOne', 'heroBtnTwo', 'challengeTitle', 'techTitle', 'jobSearchTitle', 'appTitle', 'blogOneTitle', 'blogTwoTitle', 'blogThreeTitle']
+      .forEach((name) => {
+        const input = editorFormEl.elements.namedItem(name);
+        if (input) input.value = content[name];
+      });
+  });
+}
 
 // Optional jobs-filter module (kept to resolve merge conflict between editor work and jobs work).
 const jobs = [

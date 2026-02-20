@@ -123,6 +123,47 @@
         </div>
       </section>
 
+
+      <section class="section" id="jobs">
+        <div class="container">
+          <h2 class="center-title">Featured Opportunities</h2>
+          <div class="jobs-filters">
+            <label>Discipline
+              <select id="disciplineFilter">
+                <option value="all">All</option>
+                <option value="Physician">Physician</option>
+                <option value="RN">RN</option>
+                <option value="NP / PA">NP / PA</option>
+                <option value="Allied Health">Allied Health</option>
+              </select>
+            </label>
+            <label>Location
+              <select id="locationFilter">
+                <option value="all">All</option>
+                <option value="Texas">Texas</option>
+                <option value="California">California</option>
+                <option value="Florida">Florida</option>
+                <option value="New York">New York</option>
+                <option value="Illinois">Illinois</option>
+              </select>
+            </label>
+            <label>Assignment
+              <select id="typeFilter">
+                <option value="all">All</option>
+                <option value="Locum Tenens">Locum Tenens</option>
+                <option value="Travel">Travel</option>
+                <option value="Permanent">Permanent</option>
+              </select>
+            </label>
+            <label>Keyword
+              <input id="keywordFilter" type="search" placeholder="hospitalist, rn, icu" />
+            </label>
+          </div>
+          <div id="jobsList" class="jobs-list"></div>
+          <p id="jobsEmpty" class="jobs-empty" hidden>No jobs match your selected filters.</p>
+        </div>
+      </section>
+
       <section class="section section-light">
         <div class="container">
           <h2 class="center-title">Blogs</h2>
